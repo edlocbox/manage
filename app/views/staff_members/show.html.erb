@@ -1,0 +1,7 @@
+<h1>Your Info</h1>
+<%= render :partial => "shared/user_info", :locals => {:user => @current_user} %>
+
+<h1>Your Managers</h1>
+<% @current_user.managers.each do |manager| %>
+  <%= render :partial => "shared/user_info", :locals => {:user => manager} %>
+<% end %>

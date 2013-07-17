@@ -5,3 +5,5 @@
 <% @current_user.staff_members.each do |staff_member| %>
   <%= render :partial => "shared/user_info", :locals => {:user => staff_member} %>
 <% end %>
+
+<%= link_to "Add Staff Member", new_staff_member_path %>

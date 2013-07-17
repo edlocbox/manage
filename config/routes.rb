@@ -1,6 +1,6 @@
 Manage::Application.routes.draw do
-  resources :managers, :only => [:show]
-  resources :staff_members, :only => [:show]
+  resources :managers
+  resources :staff_members
   resources :sessions, :only => [:create]
   match 'signin' => 'sessions#new', :as => "signin"
   match 'signout' => 'sessions#destroy', :as => "signout"

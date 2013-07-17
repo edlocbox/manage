@@ -1,7 +1,16 @@
-<h1>Your Info</h1>
 <%= render :partial => "shared/user_info", :locals => {:user => @current_user} %>
 
-<h1>Your Managers</h1>
-<% @current_user.managers.each do |manager| %>
-  <%= render :partial => "shared/user_info", :locals => {:user => manager} %>
-<% end %>
+<h1>Managers</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <% @current_user.managers.each do |manager| %>
+    <%= render :partial => "shared/user_info_row", :locals => {:user => manager} %>
+  <% end %>
+</table>

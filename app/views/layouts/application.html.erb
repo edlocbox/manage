@@ -8,10 +8,14 @@
 </head>
 <body>
 
-<%= render :partial => "shared/navbar" %>
-<%= render :partial => "shared/flashes" %>
+<div class="container">
 
-<%= yield %>
+  <%= render :partial => "shared/navbar" %>
+  <%= render :partial => "shared/flashes" %>
+
+  <%= yield %>
+
+</div>
 
 </body>
 </html>

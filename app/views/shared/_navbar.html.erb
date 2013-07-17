@@ -1,3 +1,11 @@
-<% if @current_user %>
-  <%= link_to "Logout", signout_path %>
-<% end %>
+<div class="container">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#">manage</a>
+      <ul class="nav">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Logout", signout_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>

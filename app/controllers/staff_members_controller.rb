@@ -1,6 +1,6 @@
 class StaffMembersController < ApplicationController
   before_filter :require_manager, :only => :create
-  before_filter :authorize_user, :only => [:edit, :update]
+  before_filter :authorize_user, :only => [:edit, :update, :show]
 
   def show
   end
@@ -36,6 +36,8 @@ class StaffMembersController < ApplicationController
 
   def authorize_user
     @staff_member = StaffMember.where(:id => params[:id]).first
-    redirect_to user_path(current_user) unless @staff_member == current_user || current_user.manager?
+    unless @staff_member == current_user || current_user.manager?
+      redirect_to user_path(current_user), :error => "You are not authorized to do that."
+    end
   end
 end

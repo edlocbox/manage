@@ -1,13 +1,11 @@
 class ManagersController < ApplicationController
+  before_filter :require_manager, :only => [:show]
   before_filter :authorize_user, :only => [:edit, :update]
 
   def edit
-    @manager = Manager.where(:id => params[:id]).first
   end
 
   def update
-    @manager = Manager.where(:id => params[:id]).first
-
     if @manager.update_attributes(params[:manager])
       redirect_to user_path(current_user), :notice => "Manager was successfully updated."
     else
@@ -22,6 +20,9 @@ class ManagersController < ApplicationController
   private
 
   def authorize_user
-    redirect_to user_path(current_user) unless @manager == current_user || current_user.manager?
+    @manager = Manager.where(:id => params[:id]).first
+    unless @manager == current_user || current_user.manager?
+      redirect_to user_path(current_user), :error => "You are not authorized to do that."
+    end
   end
 end

@@ -1,5 +1,5 @@
 Manage::Application.routes.draw do
-  resources :managers
+  resources :managers, :only => [:update, :edit, :show]
   resources :staff_members
   resources :sessions, :only => [:create]
   match 'signin' => 'sessions#new', :as => "signin"
